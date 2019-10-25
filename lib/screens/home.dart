@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class FuelForm extends StatefulWidget {
+  FuelForm({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -15,81 +15,118 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _FuelFormState createState() => _FuelFormState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+class _FuelFormState extends State<FuelForm> {
+  String result = '';
+  final _currencies = <String>['Dollars', 'Euro', 'Pounds', 'TRY'];
+  final double _formDistance = 10.0;
+  String _currency = 'Dollars';
+  TextEditingController distanceController = TextEditingController();
+  TextEditingController avgController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    TextStyle textStyle = Theme.of(context).textTheme.title;
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        backgroundColor: Colors.purple,
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              sayHello(),
+              _sayHello(),
               textDirection: TextDirection.ltr,
               style: TextStyle(color: Colors.lightBlue, fontSize: 36.0),
             ),
-            Text(
-              'You have pushed the button this many times:',
+            /*            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: DropdownButton<String>(
+                items: _currencies.map((String item) {
+                  return DropdownMenuItem<String>(
+                    value: item,
+                    child: new Text(item),
+                  );
+                }).toList(),
+                value: _currency,
+                onChanged: (String item) {
+                  setState(() {
+                    this._currency = item;
+                  });
+                },
+              ),
+            ), */
+            Padding(
+              padding: EdgeInsets.only(
+                top: _formDistance,
+              ),
+              child: TextField(
+                controller: distanceController,
+                decoration: InputDecoration(
+                    hintText: 'e.g. 124',
+                    labelStyle: textStyle,
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                    labelText: 'Distance'),
+                keyboardType: TextInputType.number,
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            Padding(
+              padding: EdgeInsets.only(
+                top: _formDistance,
+              ),
+              child: TextField(
+                controller: avgController,
+                decoration: InputDecoration(
+                    hintText: 'e.g. 17',
+                    labelStyle: textStyle,
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                    labelText: 'Distance Per Unit'),
+                keyboardType: TextInputType.number,
+              ),
             ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: _formDistance,
+                bottom: _formDistance,
+              ),
+              child: TextField(
+                controller: priceController,
+                decoration: InputDecoration(
+                    hintText: 'e.g. 1.24',
+                    labelStyle: textStyle,
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                    labelText: 'Price'),
+                keyboardType: TextInputType.number,
+              ),
+            ),
+            RaisedButton(
+              color: Theme.of(context).primaryColorDark,
+              textColor: Theme.of(context).primaryColorLight,
+              onPressed: () {
+                setState(() {
+                  result = _calculate();
+                });
+              },
+              child: Text(
+                'Submit',
+                textScaleFactor: 1.5,
+              ),
+            ),
+            Text(result),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
-  String sayHello() {
+  String _sayHello() {
     String hello;
     DateTime now = new DateTime.now();
     int hour = now.hour;
@@ -105,5 +142,17 @@ class _MyHomePageState extends State<MyHomePage> {
     String minutes =
         (minute < 10) ? '0' + minute.toString() : minute.toString();
     return "it's now " + hour.toString() + ":" + minutes + "\n" + hello;
+  }
+
+  String _calculate() {
+    double _distance = double.parse(distanceController.text);
+    double _consumption = double.parse(avgController.text);
+    double _fuelCost = double.parse(priceController.text);
+
+    double _totalCost = _distance / _consumption * _fuelCost;
+    return ('The total cost of your trip is: ' +
+        _totalCost.toStringAsFixed(2) +
+        ' ' +
+        _currency);
   }
 }
