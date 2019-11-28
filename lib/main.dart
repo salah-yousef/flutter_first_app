@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './screens/area_calculator.dart';
 import './screens/gestures_animations.dart';
-import './screens/home.dart';
+import './screens/fuel_form_calculator.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      // home: FuelForm(title: 'Trip Cost Calculator'),
       home: Scaffold(
         appBar: AppBar(
           title: Text('Learning Flutter'),
@@ -67,7 +66,8 @@ class Home extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MyHomePage()),
+                MaterialPageRoute(
+                    builder: (context) => GesturesAndAnimations()),
               );
             },
             textColor: Colors.white,
