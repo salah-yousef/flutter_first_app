@@ -23,7 +23,7 @@ class _FuelFormState extends State<FuelForm> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.deepPurple,
       ),
       body: Center(
         child: SingleChildScrollView(
