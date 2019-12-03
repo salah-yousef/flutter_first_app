@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import './screens/area_calculator.dart';
 import './screens/gestures_animations.dart';
 import './screens/fuel_form_calculator.dart';
+import './screens/productivity_timer/productivity_timer.dart';
+import './screens/stack.dart';
+import './screens/list_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -111,6 +114,76 @@ class Home extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: const Text('Fuel Form Calculator',
                   style: TextStyle(fontSize: 20)),
+            ),
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProductivityTimer()),
+              );
+            },
+            textColor: Colors.white,
+            padding: const EdgeInsets.all(0.0),
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: <Color>[
+                    Color(0xFF0D47A1),
+                    Color(0xFF1976D2),
+                    Color(0xFF42A5F5),
+                  ],
+                ),
+              ),
+              padding: const EdgeInsets.all(10.0),
+              child: const Text('Productivity Timer',
+                  style: TextStyle(fontSize: 20)),
+            ),
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyStack()),
+              );
+            },
+            textColor: Colors.white,
+            padding: const EdgeInsets.all(0.0),
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: <Color>[
+                    Color(0xFF0D47A1),
+                    Color(0xFF1976D2),
+                    Color(0xFF42A5F5),
+                  ],
+                ),
+              ),
+              padding: const EdgeInsets.all(10.0),
+              child: const Text('My Stack', style: TextStyle(fontSize: 20)),
+            ),
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyListView()),
+              );
+            },
+            textColor: Colors.white,
+            padding: const EdgeInsets.all(0.0),
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: <Color>[
+                    Color(0xFF0D47A1),
+                    Color(0xFF1976D2),
+                    Color(0xFF42A5F5),
+                  ],
+                ),
+              ),
+              padding: const EdgeInsets.all(10.0),
+              child: const Text('My List View', style: TextStyle(fontSize: 20)),
             ),
           ),
         ],
