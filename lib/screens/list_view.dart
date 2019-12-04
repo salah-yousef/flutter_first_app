@@ -32,52 +32,6 @@ class Home extends StatelessWidget {
     );
   }
 
-  List<Widget> createSquares(int numSquares) {
-    int i = 0;
-    List colors = [
-      Colors.amber,
-      Colors.deepPurple,
-      Colors.deepOrange,
-      Colors.indigo,
-      Colors.lightBlue
-    ];
-    List<Widget> squares = List<Widget>();
-    while (i < numSquares) {
-      Container square = Container(
-        color: colors[i % 5],
-        width: 100,
-        height: 100,
-        child: Text(i.toString()),
-      );
-      i++;
-      squares.add(square);
-    }
-
-    return squares;
-  }
-
-  Widget createSquare(int position) {
-    List colors = [
-      Colors.amber,
-      Colors.deepPurple,
-      Colors.deepOrange,
-      Colors.indigo,
-      Colors.lightBlue
-    ];
-    Container square = Container(
-      color: colors[position % 5],
-      width: 100,
-      height: 100,
-      child: Text(position.toString()),
-    );
-    return square;
-  }
-
-  Widget createSeparator(int position) {
-    Widget separator = Container(height: 15);
-    return separator;
-  }
-
   List<Contact> buildContacts() {
     List<Contact> contacts = List<Contact>();
     contacts
