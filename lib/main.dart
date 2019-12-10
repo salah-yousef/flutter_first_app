@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/art_util.dart';
 import './screens/area_calculator.dart';
 import './screens/gestures_animations.dart';
 import './screens/fuel_form_calculator.dart';
@@ -6,6 +7,8 @@ import './screens/productivity_timer/productivity_timer.dart';
 import './screens/stack.dart';
 import './screens/list_view.dart';
 import './screens/grid_view.dart';
+import 'art_route.dart';
+import 'art_route_tabBar.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,9 +41,9 @@ class Home extends StatelessWidget {
     return Container(
       width: sizeX,
       height: sizeY,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: GridView.count(
+        scrollDirection: Axis.vertical,
+        crossAxisCount: 2,
         children: <Widget>[
           RaisedButton(
             onPressed: () {
@@ -50,7 +53,6 @@ class Home extends StatelessWidget {
               );
             },
             textColor: Colors.white,
-            padding: const EdgeInsets.all(0.0),
             child: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -75,7 +77,6 @@ class Home extends StatelessWidget {
               );
             },
             textColor: Colors.white,
-            padding: const EdgeInsets.all(0.0),
             child: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -101,7 +102,6 @@ class Home extends StatelessWidget {
               );
             },
             textColor: Colors.white,
-            padding: const EdgeInsets.all(0.0),
             child: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -125,7 +125,6 @@ class Home extends StatelessWidget {
               );
             },
             textColor: Colors.white,
-            padding: const EdgeInsets.all(0.0),
             child: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -149,7 +148,6 @@ class Home extends StatelessWidget {
               );
             },
             textColor: Colors.white,
-            padding: const EdgeInsets.all(0.0),
             child: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -172,7 +170,6 @@ class Home extends StatelessWidget {
               );
             },
             textColor: Colors.white,
-            padding: const EdgeInsets.all(0.0),
             child: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -195,7 +192,6 @@ class Home extends StatelessWidget {
               );
             },
             textColor: Colors.white,
-            padding: const EdgeInsets.all(0.0),
             child: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
@@ -208,6 +204,53 @@ class Home extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(10.0),
               child: const Text('My Grid View', style: TextStyle(fontSize: 20)),
+            ),
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ArtRoute(art: ArtUtil.IMG_VANGOGH)),
+              );
+            },
+            textColor: Colors.white,
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: <Color>[
+                    Color(0xFF0D47A1),
+                    Color(0xFF1976D2),
+                    Color(0xFF42A5F5),
+                  ],
+                ),
+              ),
+              padding: const EdgeInsets.all(10.0),
+              child:
+                  const Text('My Art Viewer', style: TextStyle(fontSize: 20)),
+            ),
+          ),
+          RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ArtRouteTabBar()),
+              );
+            },
+            textColor: Colors.white,
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: <Color>[
+                    Color(0xFF0D47A1),
+                    Color(0xFF1976D2),
+                    Color(0xFF42A5F5),
+                  ],
+                ),
+              ),
+              padding: const EdgeInsets.all(10.0),
+              child:
+                  const Text('My Art Tab Bar', style: TextStyle(fontSize: 20)),
             ),
           ),
         ],
