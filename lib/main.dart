@@ -65,7 +65,7 @@ class Home extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(10.0),
               child:
-                  const Text('Area Calculator', style: TextStyle(fontSize: 20)),
+                  const Text('Area Calculator', style: TextStyle(fontSize: 10)),
             ),
           ),
           RaisedButton(
@@ -89,7 +89,7 @@ class Home extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(10.0),
               child: const Text('Gestures and Animations',
-                  style: TextStyle(fontSize: 20)),
+                  style: TextStyle(fontSize: 10)),
             ),
           ),
           RaisedButton(
@@ -114,7 +114,7 @@ class Home extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(10.0),
               child: const Text('Fuel Form Calculator',
-                  style: TextStyle(fontSize: 20)),
+                  style: TextStyle(fontSize: 10)),
             ),
           ),
           RaisedButton(
@@ -137,7 +137,7 @@ class Home extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(10.0),
               child: const Text('Productivity Timer',
-                  style: TextStyle(fontSize: 20)),
+                  style: TextStyle(fontSize: 10)),
             ),
           ),
           RaisedButton(
@@ -159,7 +159,7 @@ class Home extends StatelessWidget {
                 ),
               ),
               padding: const EdgeInsets.all(10.0),
-              child: const Text('My Stack', style: TextStyle(fontSize: 20)),
+              child: const Text('My Stack', style: TextStyle(fontSize: 10)),
             ),
           ),
           RaisedButton(
@@ -181,7 +181,7 @@ class Home extends StatelessWidget {
                 ),
               ),
               padding: const EdgeInsets.all(10.0),
-              child: const Text('My List View', style: TextStyle(fontSize: 20)),
+              child: const Text('My List View', style: TextStyle(fontSize: 10)),
             ),
           ),
           RaisedButton(
@@ -203,7 +203,7 @@ class Home extends StatelessWidget {
                 ),
               ),
               padding: const EdgeInsets.all(10.0),
-              child: const Text('My Grid View', style: TextStyle(fontSize: 20)),
+              child: const Text('My Grid View', style: TextStyle(fontSize: 10)),
             ),
           ),
           RaisedButton(
@@ -227,7 +227,7 @@ class Home extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(10.0),
               child:
-                  const Text('My Art Viewer', style: TextStyle(fontSize: 20)),
+                  const Text('My Art Viewer', style: TextStyle(fontSize: 10)),
             ),
           ),
           RaisedButton(
@@ -250,7 +250,7 @@ class Home extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(10.0),
               child:
-                  const Text('My Art Tab Bar', style: TextStyle(fontSize: 20)),
+                  const Text('My Art Tab Bar', style: TextStyle(fontSize: 10)),
             ),
           ),
         ],
